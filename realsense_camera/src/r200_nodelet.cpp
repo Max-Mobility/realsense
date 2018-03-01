@@ -446,6 +446,7 @@ namespace realsense_camera
    */
   void R200Nodelet::publishStaticTransforms()
   {
+    /*
     BaseNodelet::publishStaticTransforms();
 
     tf::Quaternion q_i2io;
@@ -478,6 +479,7 @@ namespace realsense_camera
     i2io_msg.transform.rotation.z = q_i2io.getZ();
     i2io_msg.transform.rotation.w = q_i2io.getW();
     static_tf_broadcaster_.sendTransform(i2io_msg);
+    */
   }
 
   /*
@@ -485,6 +487,7 @@ namespace realsense_camera
    */
   void R200Nodelet::publishDynamicTransforms()
   {
+    /*
     tf::Transform tr;
     tf::Quaternion q;
 
@@ -505,5 +508,6 @@ namespace realsense_camera
     tr.setRotation(q);
     dynamic_tf_broadcaster_.sendTransform(tf::StampedTransform(tr, transform_ts_,
           frame_id_[RS_STREAM_INFRARED2], optical_frame_id_[RS_STREAM_INFRARED2]));
+    */
   }
 }  // namespace realsense_camera

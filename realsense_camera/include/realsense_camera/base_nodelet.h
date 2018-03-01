@@ -133,10 +133,10 @@ protected:
   cv::Mat cvWrapper_;
   std::mutex frame_mutex_[STREAM_COUNT];
 
-  boost::shared_ptr<boost::thread> transform_thread_;
+  //boost::shared_ptr<boost::thread> transform_thread_;
   ros::Time transform_ts_;
-  tf2_ros::StaticTransformBroadcaster static_tf_broadcaster_;
-  tf::TransformBroadcaster dynamic_tf_broadcaster_;
+  //  tf2_ros::StaticTransformBroadcaster static_tf_broadcaster_;
+  //tf::TransformBroadcaster dynamic_tf_broadcaster_;
   rs_extrinsics color2depth_extrinsic_;  // color frame is base frame
   rs_extrinsics color2ir_extrinsic_;     // color frame is base frame
   rs_source rs_source_ = RS_SOURCE_VIDEO;

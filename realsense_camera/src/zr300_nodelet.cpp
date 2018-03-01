@@ -726,6 +726,7 @@ namespace realsense_camera
    */
   void ZR300Nodelet::publishStaticTransforms()
   {
+    /*
     BaseNodelet::publishStaticTransforms();
 
     tf::Quaternion q_i2io;
@@ -818,6 +819,7 @@ namespace realsense_camera
     imu2imuo_msg.transform.rotation.z = q_imu2imuo.getZ();
     imu2imuo_msg.transform.rotation.w = q_imu2imuo.getW();
     static_tf_broadcaster_.sendTransform(imu2imuo_msg);
+    */
   }
 
   /*
@@ -825,6 +827,7 @@ namespace realsense_camera
    */
   void ZR300Nodelet::publishDynamicTransforms()
   {
+    /*
     tf::Transform tr;
     tf::Quaternion q;
 
@@ -877,6 +880,7 @@ namespace realsense_camera
     tr.setRotation(q);
     dynamic_tf_broadcaster_.sendTransform(tf::StampedTransform(tr, transform_ts_,
           imu_frame_id_, imu_optical_frame_id_));
+    */
   }
 
   /*
