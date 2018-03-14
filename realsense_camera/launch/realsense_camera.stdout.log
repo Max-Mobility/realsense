@@ -1,0 +1,29 @@
+[0m[ INFO] [1518638891.726783402]: Initializing nodelet with 4 worker threads.[0m
+[0m[ INFO] [1518638892.860790463]: /camera/driver - Detected the following camera:
+				- Serial No: 2511003020, USB Port ID: 2-1-2, Name: Intel RealSense R200, Camera FW: 1.0.72.10[0m
+[33m[ WARN] [1518638892.861379131]: /camera/driver - Detected unvalidated firmware:
+				- 2511003020's current camera firmware is 1.0.72.10, Validated camera firmware is 1.0.72.06[0m
+[0m[ INFO] [1518638892.861687801]: /camera/driver - Detected the following camera:
+				- Serial No: 2511011555, USB Port ID: 2-1-3-1, Name: Intel RealSense R200, Camera FW: 1.0.71.06[0m
+[33m[ WARN] [1518638892.861884728]: /camera/driver - Detected unvalidated firmware:
+				- 2511011555's current camera firmware is 1.0.71.06, Validated camera firmware is 1.0.72.06[0m
+[0m[ INFO] [1518638892.862168310]: /camera/driver - Detected the following camera:
+				- Serial No: 2511004212, USB Port ID: 2-1-3-2, Name: Intel RealSense R200, Camera FW: 1.0.71.06[0m
+[33m[ WARN] [1518638892.862370037]: /camera/driver - Detected unvalidated firmware:
+				- 2511004212's current camera firmware is 1.0.71.06, Validated camera firmware is 1.0.72.06[0m
+[0m[ INFO] [1518638892.862867090]: /camera/driver - Detected the following camera:
+				- Serial No: 3511803513, USB Port ID: 2-1-3-3-2, Name: Intel RealSense ZR300, Camera FW: 2.0.71.28, Adapter FW: 1.29.0.0, Motion Module FW: 1.25.0.0[0m
+[0m[ INFO] [1518638892.863345135]: /camera/driver - Connecting to camera with Serial No: 3511803513, USB Port ID: 2-1-3-3-2[0m
+[0m[ INFO] [1518638894.913555766]: /camera/driver - Setting static camera options[0m
+[0m[ INFO] [1518638895.005688639]: /camera/driver - Enabling Depth in manual mode[0m
+[0m[ INFO] [1518638895.008748556]: /camera/driver - Enabling Color in manual mode[0m
+[0m[ INFO] [1518638895.010151107]: /camera/driver - Enabling IR in manual mode[0m
+[0m[ INFO] [1518638895.012311382]: /camera/driver - Enabling IR2 in manual mode[0m
+[0m[ INFO] [1518638895.013870476]: /camera/driver - Starting camera[0m
+[33m[ WARN] [1518638895.064904242]: /camera/driver - Using Hardcoded extrinsic for IMU.[0m
+[0m[ INFO] [1518638895.065081713]: /camera/driver - Publishing camera transforms (/tf_static)[0m
+[0m[ INFO] [1518638895.065602669]: /camera/driver - Setting dynamic camera options (r200_dc_preset=5)[0m
+[0m[ INFO] [1518638897.696303260]: /camera/driver - Initializing Depth Control Preset to 5[0m
+[0m[ INFO] [1518638899.750238380]: /camera/driver - Setting dynamic camera options[0m
+[0m[ INFO] [1518638953.882932257]: /camera/driver - Stopping camera[0m
+[0m[ INFO] [1518638954.016874023]: /camera/driver - Stopping...[0m

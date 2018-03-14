@@ -1,0 +1,235 @@
+<!-- Sample launch file for using multiple RealSense R200 cameras -->
+
+<launch>
+  <arg name="camera"                                                                   default="camera" /> <!-- all-encapsulating namespace -->
+  <arg name="depth"                                                                    default="depth" />
+  <arg name="rgb"                                                                      default="rgb" />
+  <arg name="ir"                                                                       default="ir" />
+  <arg name="enable_ir"                                                                default="false"/>
+  <arg name="enable_ir2"                                                               default="false"/>
+  <arg name="depth_registered"                                                         default="depth_registered" />
+  <arg name="single_processing_node"                                                   default="true" />
+  <arg name="respawn"                                                                  default="false"/>
+  <arg name="rgb_processing"                                                           default="true"/>
+  <arg name="ir_processing"                                                            default="false"/>
+  <arg name="depth_processing"                                                         default="true"/>
+  <arg name="depth_registered_processing"                                              default="true"/>
+  <arg name="disparity_processing"                                                     default="false"/>
+  <arg name="disparity_registered_processing"                                          default="false"/>
+  <arg name="hw_registered_processing"                                                 default="false" />
+  <arg name="sw_registered_processing"                                                 default="true" />
+  <arg name="enable_tf"                                                                default="false"/>
+  <arg name="enable_tf_dynamic"                                                        default="false"/>
+  <arg name="tf_publication_rate"                                                      default="0.25"/>
+  
+
+
+  <arg name="camera1"                                                                  default="camera1" />
+  <!-- Arguments for remapping device namespaces -->
+  <arg name="camera1_depth"                                                            default="$(arg depth)" />
+  <arg name="camera1_rgb"                                                              default="$(arg rgb)" />
+  <arg name="camera1_ir"                                                               default="$(arg ir)" />
+  <arg name="camera1_depth_registered"                                                 default="$(arg depth_registered)"/>
+  <arg name="camera1_camera_type"                                                      default="R200"/> <!-- Type of camera -->
+  <arg name="camera1_serial_no"                                                        default="2511004212"/> 
+  <arg name="camera1_usb_port_id"                                                      default=""        /> <!-- USB "Bus#-Port#" -->
+  <!-- Best know configuration for generating depth registered point cloud. -->
+  <param name="$(arg camera)/$(arg camera1)/driver/mode"                type="string"  value="manual"/>
+  <param name="$(arg camera)/$(arg camera1)/driver/color_width"         type="int"     value="320" />
+  <param name="$(arg camera)/$(arg camera1)/driver/color_height"        type="int"     value="240" />
+  <param name="$(arg camera)/$(arg camera1)/driver/depth_width"         type="int"     value="320" />
+  <param name="$(arg camera)/$(arg camera1)/driver/depth_height"        type="int"     value="240" />
+  <param name="$(arg camera)/$(arg camera1)/driver/depth_fps"           type="int"     value="30" />
+  <param name="$(arg camera)/$(arg camera1)/driver/color_fps"           type="int"     value="30" />
+  <param name="$(arg camera)/$(arg camera1)/driver/enable_ir"           type="bool"    value="false"/>
+  <param name="$(arg camera)/$(arg camera1)/driver/enable_ir2"          type="bool"    value="false"/>
+  <param name="$(arg camera)/$(arg camera1)/driver/enable_pointcloud"   type="bool"    value="false" />
+  <param name="$(arg camera)/$(arg camera1)/driver/enable_tf"          type="bool"    value="$(arg enable_tf)" />
+  <param name="$(arg camera)/$(arg camera1)/driver/enable_tf_dynamic"   type="bool"    value="$(arg enable_tf_dynamic)"/>
+  <param name="$(arg camera)/$(arg camera1)/driver/tf_publication_rate" type="double"  value="$(arg tf_publication_rate)"/>
+
+
+
+  <arg name="camera2"                                                                  default="camera2" />
+  <!-- Arguments for remapping device namespaces -->
+  <arg name="camera2_depth"                                                            default="depth"/>
+  <arg name="camera2_rgb"                                                              default="rgb"/>
+  <arg name="camera2_ir"                                                               default="ir"/>
+  <arg name="camera2_depth_registered"                                                 default="$(arg depth_registered)"/>
+  <arg name="camera2_camera_type"                                                      default="R200"/> <!-- Type of camera -->
+  <arg name="camera2_serial_no"                                                        default="2511003020"/> 
+  <arg name="camera2_usb_port_id"                                                      default="" /> <!-- USB "Bus#-Port#" -->
+  <!-- Best know configuration for generating depth registered point cloud. -->
+  <param name="$(arg camera)/$(arg camera2)/driver/mode"                type="string"  value="manual"/>
+  <param name="$(arg camera)/$(arg camera2)/driver/color_width"         type="int"     value="320"/>
+  <param name="$(arg camera)/$(arg camera2)/driver/color_height"        type="int"     value="240"/>
+  <param name="$(arg camera)/$(arg camera2)/driver/depth_width"         type="int"     value="320"/>
+  <param name="$(arg camera)/$(arg camera2)/driver/depth_height"        type="int"     value="240"/>
+  <param name="$(arg camera)/$(arg camera2)/driver/depth_fps"           type="int"     value="30"/>
+  <param name="$(arg camera)/$(arg camera2)/driver/color_fps"           type="int"     value="30"/>
+  <param name="$(arg camera)/$(arg camera2)/driver/enable_ir"           type="bool"    value="false"/>
+  <param name="$(arg camera)/$(arg camera2)/driver/enable_ir2"          type="bool"    value="false"/>
+  <param name="$(arg camera)/$(arg camera2)/driver/enable_pointcloud"   type="bool"    value="false"/>
+  <param name="$(arg camera)/$(arg camera2)/driver/enable_tf"           type="bool"    value="$(arg enable_tf)" />
+  <param name="$(arg camera)/$(arg camera2)/driver/enable_tf_dynamic"   type="bool"    value="$(arg enable_tf_dynamic)"/>
+  <param name="$(arg camera)/$(arg camera2)/driver/tf_publication_rate" type="double"  value="$(arg tf_publication_rate)"/>
+
+
+
+  <arg name="camera3"                                                                  default="camera3"/>
+  <!-- Arguments for remapping device namespaces -->
+  <arg name="camera3_depth"                                                            default="depth"/>
+  <arg name="camera3_rgb"                                                              default="rgb"/>
+  <arg name="camera3_ir"                                                               default="ir"/>
+  <arg name="camera3_depth_registered"                                                 default="$(arg depth_registered)"/>
+  <arg name="camera3_camera_type"                                                      default="R200"/> <!-- Type of camera -->
+  <arg name="camera3_serial_no"                                                        default="2511011555"/> 
+  <arg name="camera3_usb_port_id"                                                      default=""/> <!-- USB "Bus#-Port#" -->
+  <!-- Best know configuration for generating depth registered point cloud. -->
+  <param name="$(arg camera)/$(arg camera3)/driver/mode"                type="string"  value="manual" />
+  <param name="$(arg camera)/$(arg camera3)/driver/color_width"         type="int"     value="320" />
+  <param name="$(arg camera)/$(arg camera3)/driver/color_height"        type="int"     value="240" />
+  <param name="$(arg camera)/$(arg camera3)/driver/depth_width"         type="int"     value="320" />
+  <param name="$(arg camera)/$(arg camera3)/driver/depth_height"        type="int"     value="240" />
+  <param name="$(arg camera)/$(arg camera3)/driver/depth_fps"           type="int"     value="30" />
+  <param name="$(arg camera)/$(arg camera3)/driver/color_fps"           type="int"     value="30" />
+  <param name="$(arg camera)/$(arg camera3)/driver/enable_ir"           type="bool"    value="false"/>
+  <param name="$(arg camera)/$(arg camera3)/driver/enable_ir2"          type="bool"    value="false"/>
+  <param name="$(arg camera)/$(arg camera3)/driver/enable_pointcloud"   type="bool"    value="false" />
+  <param name="$(arg camera)/$(arg camera3)/driver/enable_tf"           type="bool"    value="$(arg enable_tf)" />
+  <param name="$(arg camera)/$(arg camera3)/driver/enable_tf_dynamic"   type="bool"    value="$(arg enable_tf_dynamic)"/>
+  <param name="$(arg camera)/$(arg camera3)/driver/tf_publication_rate" type="double"  value="$(arg tf_publication_rate)"/>
+
+
+
+  <arg name="camera4"                                                                  default="camera4"/>
+  <!-- Arguments for remapping device namespaces -->
+  <arg name="camera4_depth"                                                            default="depth"/>
+  <arg name="camera4_rgb"                                                              default="rgb"/>
+  <arg name="camera4_ir"                                                               default="ir"/>
+  <arg name="camera4_depth_registered"                                                 default="$(arg depth_registered)"/>
+  <arg name="camera4_camera_type"                                                      default="ZR300"/> <!-- Type of camera -->
+  <arg name="camera4_serial_no"                                                        default="3511803513" /> 
+  <arg name="camera4_usb_port_id"                                                      default="" /> <!-- USB "Bus#-Port#" -->
+  <!-- Best know configuration for generating depth registered point cloud. -->
+  <param name="$(arg camera)/$(arg camera4)/driver/mode"                type="string"  value="manual" />
+  <param name="$(arg camera)/$(arg camera4)/driver/color_width"         type="int"     value="320" />
+  <param name="$(arg camera)/$(arg camera4)/driver/color_height"        type="int"     value="240" />
+  <param name="$(arg camera)/$(arg camera4)/driver/depth_width"         type="int"     value="320" />
+  <param name="$(arg camera)/$(arg camera4)/driver/depth_height"        type="int"     value="240" />
+  <param name="$(arg camera)/$(arg camera4)/driver/depth_fps"           type="int"     value="30" />
+  <param name="$(arg camera)/$(arg camera4)/driver/color_fps"           type="int"     value="30" />
+  <param name="$(arg camera)/$(arg camera4)/driver/enable_ir"           type="bool"    value="false"/>
+  <param name="$(arg camera)/$(arg camera4)/driver/enable_ir2"          type="bool"    value="false"/>
+  <param name="$(arg camera)/$(arg camera4)/driver/enable_pointcloud"   type="bool"    value="false" />
+  <param name="$(arg camera)/$(arg camera4)/driver/enable_tf"           type="bool"    value="$(arg enable_tf)" />
+  <param name="$(arg camera)/$(arg camera4)/driver/enable_tf_dynamic"   type="bool"    value="$(arg enable_tf_dynamic)"/>
+  <param name="$(arg camera)/$(arg camera4)/driver/tf_publication_rate" type="double"  value="$(arg tf_publication_rate)"/>
+
+
+  <remap from="/$(arg camera)/$(arg camera1)/rgb/camera_info" to="/$(arg camera)/rgb/camera_info"/>
+  <remap from="/$(arg camera)/$(arg camera1)/rgb/image_raw" to="/$(arg camera)/rgb/image_raw"/>
+  <remap from="/$(arg camera)/$(arg camera1)/depth/camera_info" to="/$(arg camera)/depth/camera_info"/>
+  <remap from="/$(arg camera)/$(arg camera1)/depth/image_raw" to="/$(arg camera)/depth/image_raw"/>
+
+  <remap from="/$(arg camera)/$(arg camera2)/rgb/camera_info" to="/$(arg camera)/rgb/camera_info"/>
+  <remap from="/$(arg camera)/$(arg camera2)/rgb/image_raw" to="/$(arg camera)/rgb/image_raw"/>
+  <remap from="/$(arg camera)/$(arg camera2)/depth/camera_info" to="/$(arg camera)/depth/camera_info"/>
+  <remap from="/$(arg camera)/$(arg camera2)/depth/image_raw" to="/$(arg camera)/depth/image_raw"/>
+
+  <remap from="/$(arg camera)/$(arg camera3)/rgb/camera_info" to="/$(arg camera)/rgb/camera_info"/>
+  <remap from="/$(arg camera)/$(arg camera3)/rgb/image_raw" to="/$(arg camera)/rgb/image_raw"/>
+  <remap from="/$(arg camera)/$(arg camera3)/depth/camera_info" to="/$(arg camera)/depth/camera_info"/>
+  <remap from="/$(arg camera)/$(arg camera3)/depth/image_raw" to="/$(arg camera)/depth/image_raw"/>
+
+  <remap from="/$(arg camera)/$(arg camera4)/rgb/camera_info" to="/$(arg camera)/rgb/camera_info"/>
+  <remap from="/$(arg camera)/$(arg camera4)/rgb/image_raw" to="/$(arg camera)/rgb/image_raw"/>
+  <remap from="/$(arg camera)/$(arg camera4)/depth/camera_info" to="/$(arg camera)/depth/camera_info"/>
+  <remap from="/$(arg camera)/$(arg camera4)/depth/image_raw" to="/$(arg camera)/depth/image_raw"/>
+
+  <remap from="/$(arg camera)/depth_registered/sw_registered/image_rect_raw" to="/$(arg camera)/depth_registered/image_raw"/>
+
+  <group ns="$(arg camera)">
+    <arg name="manager" value="camera_nodelet_manager" /> <!-- Single nodelet manager for all cameras -->
+    <node pkg="nodelet" type="nodelet" name="$(arg manager)" args="manager" output="screen"/>
+
+    <include file="$(find rgbd_launch)/launch/includes/processing.launch.xml">
+      <arg name="manager"                         value="$(arg manager)" />
+      <arg name="rgb"                             value="$(arg rgb)" />
+      <arg name="ir"                              value="$(arg ir)" />
+      <arg name="depth"                           value="$(arg depth)" />
+      <arg name="depth_registered"                value="$(arg depth_registered)" />
+      <arg name="respawn"                         value="$(arg respawn)" />
+      <arg name="rgb_processing"                  value="$(arg rgb_processing)" />
+      <arg name="ir_processing"                   value="$(arg ir_processing)" />
+      <arg name="depth_processing"                value="$(arg depth_processing)" />
+      <arg name="depth_registered_processing"     value="$(arg depth_registered_processing)" />
+      <arg name="disparity_processing"            value="$(arg disparity_processing)" />
+      <arg name="disparity_registered_processing" value="$(arg disparity_registered_processing)" />
+      <arg name="hw_registered_processing"        value="$(arg hw_registered_processing)" />
+      <arg name="sw_registered_processing"        value="$(arg sw_registered_processing)" />
+    </include>
+
+
+    <group ns="$(arg camera1)">
+      <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
+	<arg name="manager"      value="/$(arg camera)/$(arg manager)" />
+	<arg name="camera"       value="$(arg camera1)" />
+	<arg name="camera_type"  value="$(arg camera1_camera_type)" />
+	<arg name="serial_no"    value="$(arg camera1_serial_no)" />
+	<arg name="usb_port_id"  value="$(arg camera1_usb_port_id)" />
+	<arg name="depth"        value="$(arg camera1_depth)" />
+	<arg name="rgb"          value="$(arg camera1_rgb)" />
+	<arg name="ir"           value="$(arg camera1_ir)" />
+      </include>
+
+    </group> 
+
+   <group ns="$(arg camera2)">
+      <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
+	<arg name="manager"      value="/$(arg camera)/$(arg manager)" />
+	<arg name="camera"       value="$(arg camera2)" />
+	<arg name="camera_type"  value="$(arg camera2_camera_type)" />
+	<arg name="serial_no"    value="$(arg camera2_serial_no)" />
+	<arg name="usb_port_id"  value="$(arg camera2_usb_port_id)" />
+	<arg name="depth"        value="$(arg camera2_depth)" />
+	<arg name="rgb"          value="$(arg camera2_rgb)" />
+	<arg name="ir"           value="$(arg camera2_ir)" />
+      </include>
+
+      
+    </group>
+
+<!--    <group ns="$(arg camera3)">
+      <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
+	<arg name="manager"      value="/$(arg camera)/$(arg manager)" />
+	<arg name="camera"       value="$(arg camera3)" />
+	<arg name="camera_type"  value="$(arg camera3_camera_type)" />
+	<arg name="serial_no"    value="$(arg camera3_serial_no)" />
+	<arg name="usb_port_id"  value="$(arg camera3_usb_port_id)" />
+	<arg name="depth"        value="$(arg camera3_depth)" />
+	<arg name="rgb"          value="$(arg camera3_rgb)" />
+	<arg name="ir"           value="$(arg camera3_ir)" />
+      </include>
+
+    </group> 
+
+    <group ns="$(arg camera4)">
+    <include file="$(find realsense_camera)/launch/includes/nodelet_rgbd.launch.xml">
+    <arg name="manager"      value="/$(arg camera)/$(arg manager)" />
+    <arg name="camera"       value="$(arg camera4)" />
+    <arg name="camera_type"  value="$(arg camera4_camera_type)" />
+    <arg name="serial_no"    value="$(arg camera4_serial_no)" />
+    <arg name="usb_port_id"  value="$(arg camera4_usb_port_id)" />
+    <arg name="depth"        value="$(arg camera4_depth)" />
+    <arg name="rgb"          value="$(arg camera4_rgb)" />
+    <arg name="ir"           value="$(arg camera4_ir)" />
+  </include>
+
+  </group> -->
+    
+
+  </group>
+
+
+</launch>
